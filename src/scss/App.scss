@@ -1,1 +1,34 @@
-@import 'core/reset';
+@import 'core/_reset';
+@import 'core/variables';
+
+.link {
+    display: none;
+    display: inline;
+    padding: 0.3rem 1rem;
+  }
+
+.page > .details {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 2rem;
+    margin: 1rem;
+
+.card__title {
+      font-size: 2rem;
+    }
+
+.card__description {
+      font-size: 1rem;
+    }
+}
+
+.landing {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    margin: 2rem;
+  }
+  
+.labelCity{
+      display: block;
+}
