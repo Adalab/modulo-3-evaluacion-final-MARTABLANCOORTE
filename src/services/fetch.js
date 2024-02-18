@@ -1,22 +1,27 @@
 export function fetchCharacters() {
-  return fetch("https://hp-api.onrender.com/api/characters")
+  return fetch('https://hp-api.onrender.com/api/characters')
     .then((response) => response.json())
-    .then((reponseData) => {
-      return reponseData.results.map((eachCharacter) => {
+    .then((responseData) => {
+      console.log(responseData);
+      return responseData.map((character) => {
         return {
-          id: eachCharacter.id,
-          name: eachCharacter.name,
-          image: eachCharacter.image,
-          species: eachCharacter.species,
-          house: eachCharacter.house,
-          alive: eachCharacter.alive,
-          hogwartsStaff: eachCharacter.hogwartsStaff,
-          hogwartsStudent: eachCharacter.hogwartsStudent,
-          patronus: eachCharacter.patronus,
-          wandWood: eachCharacter.wand.wood,
-          wandCore: eachCharacter.wand.core,
-          wandLength: eachCharacter.wand.wood.length,
+          id: character.id,
+          name: character.name,
+          image: character.image,
+          species: character.species,
+          house: character.house,
+          gender: character.gender,
+          alive: character.alive,
+          hogwartsStaff: character.hogwartsStaff,
+          hogwartsStudent: character.hogwartsStudent,
+          patronus: character.patronus,
+          wandWood: character.wand.wood,
+          wandCore: character.wand.core,
+          wandLength: character.wand.wood.length,
         };
       });
     });
 }
+
+export default fetchCharacters;
+//eachCharacter

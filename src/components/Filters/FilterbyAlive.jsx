@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function FilterByAlive({ filterAlive, handleChangeFilterAlive }) {
+function FilterByAlive({ filterAlive, handleFilterAlive }) {
     
     const handleChangeAlive = (event) => {
-        handleChangeFilterAlive(event.currentTarget.id, event.currentTarget.value);
+        handleFilterAlive(event.currentTarget.id, event.currentTarget.checked);
     };
-  
+
     return (
       <div className="col2 mt-1">
         <fieldset>Status:
@@ -15,7 +15,7 @@ function FilterByAlive({ filterAlive, handleChangeFilterAlive }) {
                     name="status"
                     id="alive"
                     value="alive"
-                    checked={filterAlive === "alive"} // true
+                    checked={filterAlive === "alive"} //true
                     onInput={handleChangeAlive}
                 />
                 <label htmlFor="alive"> Alive</label>
@@ -35,7 +35,7 @@ function FilterByAlive({ filterAlive, handleChangeFilterAlive }) {
                     name="status"
                     id="allstatus"
                     value="allstatus"
-                    checked={filterAlive === "allstatus"} // true y false
+                    checked={filterAlive === "all"}
                     onInput={handleChangeAlive}
                 />
                 <label htmlFor="allstatus"> All</label>
@@ -43,6 +43,11 @@ function FilterByAlive({ filterAlive, handleChangeFilterAlive }) {
         </fieldset>
       </div>
     );
+  }
+
+  FilterByAlive.propTypes = {
+    filterAlive: PropTypes.string,
+    handleFilterAlive: PropTypes.func,
   }
   
   export default FilterByAlive;

@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function FilterByCharacter(filterCharacter, handleFilterCharacter) {
+function FilterByCharacter(handleFilterCharacter) {
 
   const handleInputCharacter = (event) => {
     handleFilterCharacter(event.currentTarget.value);
@@ -15,6 +15,11 @@ function FilterByCharacter(filterCharacter, handleFilterCharacter) {
       </fieldset>
     </div>
   );
+}
+
+FilterByCharacter.propTypes = {
+  //filterCharacter: PropTypes.string,
+  handleFilterCharacter: PropTypes.func,
 }
 
 export default FilterByCharacter;

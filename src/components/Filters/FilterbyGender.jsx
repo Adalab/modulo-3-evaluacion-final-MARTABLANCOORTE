@@ -1,15 +1,25 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function FilterByGender({ filterGender, handleChangeFilterGender }) {
+function FilterByGender({ filterGender, handleFilterGender }) {
     
     const handleChangeGender = (event) => {
-      handleChangeFilterGender(event.currentTarget.id, event.currentTarget.value);
+      handleFilterGender(event.currentTarget.id, event.currentTarget.value);
     };
   
     return (
       <div className="col2 mt-1">
         <fieldset>Gender:
         <div>
+          <input
+            type="radio"
+            name="gender"
+            id="all"
+            value="all"
+            checked={filterGender === "all"}
+            onInput={handleChangeGender}
+          />
+          <label htmlFor="all"> All</label>
+
           <input
             type="radio"
             name="gender"
@@ -29,20 +39,16 @@ function FilterByGender({ filterGender, handleChangeFilterGender }) {
             onInput={handleChangeGender}
           />
           <label htmlFor="male"> Male</label>
-  
-          <input
-            type="radio"
-            name="gender"
-            id="all"
-            value="all"
-            checked={filterGender === "all"}
-            onInput={handleChangeGender}
-          />
-          <label htmlFor="all"> All</label>
+
         </div>
       </fieldset>
     </div>
   );
 }
-  
+
+FilterByGender.propTypes = {
+  filterGender: PropTypes.string,
+  handleFilterGender: PropTypes.func,
+}
+
 export default FilterByGender
