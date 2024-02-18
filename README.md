@@ -1,6 +1,5 @@
 
-![Visita-Hogwarts-online-y-gratis-en-la-gran-semana-de-Harry-Potter](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/fc207b84-5caa-475f-bc5e-ebd08c7816b5)
-
+![Sello](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/f7264cbc-ef37-4cf8-9522-4d4f7a32402d)
 
 WELCOME TO PLATFORM 9-3/4 TO HOGWARTS!!
 
@@ -12,4 +11,4 @@ I HOPE YOU ENJOY THE FILTERS AND FIND THE CHARACTERS YOU ARE LOOKING FOR!
 
 HAVE FUN!
 
-![Sello](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/f7264cbc-ef37-4cf8-9522-4d4f7a32402d)
+![Visita-Hogwarts-online-y-gratis-en-la-gran-semana-de-Harry-Potter](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/fc207b84-5caa-475f-bc5e-ebd08c7816b5)
