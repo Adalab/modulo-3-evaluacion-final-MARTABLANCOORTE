@@ -1,3 +1,4 @@
+import "../scss/App.scss";
 import PropTypes from 'prop-types';
 
 function FilterByCharacter(handleFilterCharacter) {

@@ -7,8 +7,7 @@ function FilterByHouse({ handleFilterHouse }) {
     };
   
     return (
-      <div className="col2 mt-1">
-        <fieldset>House:
+        <fieldset className="col2 mt-1" >House:
           <label htmlFor="house">
             <select name="house" id="house">
                 <option value="Gryffindor" onInput={handleInputHouse}>Gryffindor</option>
@@ -19,7 +18,6 @@ function FilterByHouse({ handleFilterHouse }) {
             </select>
           </label>
         </fieldset>
-      </div>
     );
   }
 

@@ -1,7 +1,8 @@
+import "../scss/App.scss";
 import CharacterCard from "./CharacterCard";
 import PropTypes from "prop-types";
 
-function CharacterList({ charaters }) {
+function CharacterList({ characters }) {
   const renderCharacters = characters.map((character) => {
     return (
       <li className="card" key={character.id}>
@@ -17,4 +18,8 @@ function CharacterList({ charaters }) {
   );
 }
 
-export default CharacterList;
+CharacterList.propTypes = {
+  characters: PropTypes.array
+};
+
+export default CharacterList

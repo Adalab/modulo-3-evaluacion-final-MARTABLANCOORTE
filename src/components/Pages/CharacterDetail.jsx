@@ -1,5 +1,6 @@
-import propTypes from "prop-types";
-import {  Link, useParams } from "react-router-dom";
+import "../scss/App.scss";
+import PropTypes from "prop-types";
+import { Link, useParams } from "react-router-dom";
 
 function CharacterDetail({ findCharacter }) {
 
@@ -35,7 +36,7 @@ function CharacterDetail({ findCharacter }) {
 }
 
 CharacterDetail.propTypes = {
-
+  findCharacter: PropTypes.func.isRequire
 };
 
 export default CharacterDetail;

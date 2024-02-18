@@ -1,15 +1,15 @@
-import "../scss/App.scss";
+import "./scss/App.scss";
 
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./Pages/Landing/Header";
-import Footer from "./Pages/Landing/Footer";
 import Filters from "./Filters/Filters";
 import CharacterList from "./Characters/CharacterList";
 import CharacterDetail from "./Pages/CharacterDetail";
-import ls from "../services/LocalStorage.js";
-import fetchCharacters from "../services/fetch.js";
+import ls from "../components/services/LocalStorage.js";
+import fetchCharacters from "../components/services/fetch.js";
+import Footer from "./Pages/footer.jsx";
+import Header from "./Pages/header.jsx";
 
 function App() {
   // 1. Variables de estado
@@ -122,7 +122,7 @@ function App() {
     else if (setfilterAlive === "alive") {
       return data.filter((character) => character.alive === "true")
     } 
-    else (setfilterAlive === "dead") 
+    else if (setfilterAlive === "dead") 
       {return data.filter((character) => character.alive === "false")
     }
   };
@@ -164,38 +164,40 @@ function App() {
 
   return (
     <div className="page">
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="col2">
-              <div>
-                <Filters
-                  filterCharacter={filterCharacter}
-                  filterStudent={filterStudent}
-                  filterHouse={filterHouse}
-                  filterGender={filterGender}
-                  filterAlive={filterAlive}
-                  handleFilterCharacter={handleFilterCharacter}
-                  handleFilterStudent={handleFilterStudent}
-                  handleFilterHouse={handleFilterHouse}
-                  handleFilterGender={handleFilterGender}
-                  handleFilterAlive={handleFilterAlive}
-                />
+      <Header/>
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="col2">
+                <div>
+                  <Filters
+                    filterCharacter={filterCharacter}
+                    filterStudent={filterStudent}
+                    filterHouse={filterHouse}
+                    filterGender={filterGender}
+                    filterAlive={filterAlive}
+                    handleFilterCharacter={handleFilterCharacter}
+                    handleFilterStudent={handleFilterStudent}
+                    handleFilterHouse={handleFilterHouse}
+                    handleFilterGender={handleFilterGender}
+                    handleFilterAlive={handleFilterAlive}
+                  />
+                </div>
+                <div>
+                  <CharacterList characters={filteredCharacters} />
+                </div>
               </div>
-              <div>
-                <CharacterList characters={filteredCharacters} />
-              </div>
-            </div>
-          }
-        />
-        <Route
-          path="/character/:id"
-          element={<CharacterDetail findCharacter={findCharacter} />}
-        />
-      </Routes>
-      <Footer />
+            }
+          />
+          <Route
+            path="/character/:id"
+            element={<CharacterDetail findCharacter={findCharacter} />}
+          />
+        </Routes>
+      </main>
+      <Footer/>
     </div>
   );
 }
