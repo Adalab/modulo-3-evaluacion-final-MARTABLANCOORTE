@@ -1,8 +1,8 @@
 import '../../scss/App.scss';
 import PropTypes from 'prop-types';
-import FilterbyHouse from './FilterbyHouse';
 
-function FilterByStudent({handleFilterStudent, handleFilterHouse }) {
+
+function FilterByStudent({handleFilterStudent}) {
     
     const handleInputStudent = (event) => {
         handleFilterStudent(event.currentTarget.value);
@@ -17,7 +17,6 @@ function FilterByStudent({handleFilterStudent, handleFilterHouse }) {
                 <option value="Students">Hogwarts Students</option>
                 <option value="Staff">Hogwarts Staff</option>
             </select>
-            <FilterbyHouse handleFilterHouse={handleFilterHouse}/>
           </label>
         </fieldset>
       </div>

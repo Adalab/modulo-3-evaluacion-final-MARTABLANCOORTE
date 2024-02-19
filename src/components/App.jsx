@@ -16,10 +16,10 @@ function App() {
   // 1. Variables de estado
   const [characterArray, setCharacterArray] = useState([]);
   const [filterCharacter, setfilterCharacter] = useState("");
-  const [filterStudent, setfilterStudent] = useState("all");
-  const [filterHouse, setfilterHouse] = useState("all");
-  const [filterGender, setfilterGender] = useState("all");
-  const [filterAlive, setfilterAlive] = useState("all");
+  const [filterStudent, setfilterStudent] = useState("All");
+  const [filterHouse, setfilterHouse] = useState("Gryffindor");
+  const [filterGender, setfilterGender] = useState("All");
+  const [filterAlive, setfilterAlive] = useState("All");
 
   // 2. useEffect
 
@@ -30,7 +30,7 @@ function App() {
         setCharacterArray(data);
         ls.set("characters", data);
       });
-    } else {
+    } else{
       setCharacterArray(ls.get("characters"));
     }
   }, []);
@@ -40,16 +40,16 @@ function App() {
   // Función para manejar el cambio en los filtros
   const handleFilterCharacter = (value) => {
     setfilterCharacter(value);
-    applyFilterName();
   };
 
   const handleFilterStudent = (value) => {
     setfilterStudent(value);
-    applyFilterStudent (value);
   };
 
   const handleFilterHouse = (value) => {
     setfilterHouse(value);
+
+    console.log(value);
   };
 
   const handleFilterGender = (value) => {
@@ -60,47 +60,31 @@ function App() {
     setfilterAlive(value);
   };
 
-  // Función para aplicar el filtro por nombre
-  const applyFilterName = () => {
-    if (filterCharacter) {
-      const CharacterfilteredbyName = characterArray.filter((character) =>
-        character.name.toLowerCase().includes(filterCharacter.toLowerCase())
-      );
-      setCharacterArray(CharacterfilteredbyName);
-    }
-  };
+  const filterbyName = (character) => character.name.toLowerCase().includes(filterCharacter.toLowerCase());
 
-
-  // Función para aplicar el filtro Student - Staff - All
-  const applyFilterStudent = (filterStudent) => {
-    let CharacterfileredbyStatus;
-
-    if (filterStudent === "Students") {
-      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStudent );
-    } else if (filterStudent === "Staff") {
-      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStaff);
-    } else {
-      CharacterfileredbyStatus = characterArray;
-    }
-    setCharacterArray(CharacterfileredbyStatus);
-  };
-
-  /*// Función para aplicar el filtro Student - Staff - All
-  const applyFilterHouse = (data) => {
-    if (filterHouse === "All") {
-      return data;
-    } else if (filterHouse === "Gryffindor") {
-      return data.filter((character) => character.house === "Gryffindor");
-    } else if (filterHouse === "Hufflepuff") {
-      return data.filter((character) => character.house === "Gryffindor");
-    } else if (filterHouse === "Ravenclaw") {
-      return data.filter((character) => character.house === "Gryffindor");
-    } else if (filterHouse === "Slytherin") {
-      return data.filter((character) => character.house === "Gryffindor");
-    } else {
-      return data;
-    }
-  };*/
+  const filteredCharacters = 
+    characterArray
+      .filter(filterbyName)
+      .filter((character) => {
+        if (filterStudent === "Students") {
+          return character.hogwartsStudent;
+        } 
+        else if (filterStudent === "Staff") {
+          return character.hogwartsStaff;
+        } 
+        else {
+          return true;
+        }
+      })
+      .filter ((character) => {
+        console.log(filterHouse,character.house);
+        if (filterHouse !== "All") {
+          return character.house === filterHouse;
+        } 
+        else {
+          return true;
+        }
+      });
 
   /*// Función para el filtrofilteredCharacter de genero:
   const applyFilterGender = (data) => {
@@ -136,28 +120,6 @@ function App() {
   */
 
   //Para los filtros:
-
-  //filtros - uno engloba al otro:
-  /*const filteredCharacterbyName = applyFilterName(
-    datacharacters,
-    setfilterCharacter
-  );
-  const filteredCharactersByStudent = applyFilterStudent(
-    filteredCharacterbyName,
-    setfilterStudent
-  );
-  const filteredCharactersByHouse = applyFilterHouse(
-    filteredCharactersByStudent,
-    setfilterHouse
-  );
-  const filteredCharactersByGender = applyFilterGender(
-    filteredCharactersByHouse,
-    setfilterGender
-  );
-  const filteredCharacters = applyFilterAlive(
-    filteredCharactersByGender,
-    setfilterAlive
-  );*/
 
   //para la pagina de Details:
   const findCharacter = (id) => {
@@ -200,7 +162,7 @@ function App() {
                   />
                 </div>
                 <div>
-                  <CharacterList characterArray={characterArray}/>
+                  <CharacterList characterArray={filteredCharacters}/>
                   {characterArray.length <= 0 && <p> There is no character with that name. Please try again </p>}
 
                 </div>

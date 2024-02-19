@@ -4,19 +4,18 @@ import PropTypes from 'prop-types';
 function FilterByHouse({ handleFilterHouse }) {
     
     const handleInputHouse = (event) => {
-      event.preventDefault();
       handleFilterHouse(event.currentTarget.value);
     };
   
     return (
         <div className="col2 mt-1" >
           <label htmlFor="house">House:
-            <select name="house" id="house">
-                <option value="Gryffindor" onInput={handleInputHouse}>Gryffindor</option>
-                <option value="Hufflepuff" onInput={handleInputHouse}>Hufflepuff</option>
-                <option value="Ravenclaw" onInput={handleInputHouse}>Ravenclaw</option>
-                <option value="Slytherin" onInput={handleInputHouse}>Slytherin</option>
-                <option value="All" onInput={handleInputHouse}>All</option>
+            <select name="house" id="house" onInput={handleInputHouse}>
+                <option value="Gryffindor">Gryffindor</option>
+                <option value="Hufflepuff">Hufflepuff</option>
+                <option value="Ravenclaw">Ravenclaw</option>
+                <option value="Slytherin">Slytherin</option>
+                <option value="All">All</option>
             </select>
           </label>
         </div>

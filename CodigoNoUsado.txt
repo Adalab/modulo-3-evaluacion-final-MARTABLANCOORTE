@@ -1,0 +1,41 @@
+// Función para aplicar el filtro por nombre
+  /*const applyFilterName = (filterCharacter) => {
+    if (filterCharacter) {
+      const CharacterfilteredbyName = characterArray.filter((character) =>
+        character.name.toLowerCase().includes(filterCharacter.toLowerCase())
+      );
+      setCharacterArray(CharacterfilteredbyName);
+    }
+  };
+
+
+  // Función para aplicar el filtro Student - Staff - All
+  const applyFilterStudent = (filterStudent) => {
+    let CharacterfileredbyStatus;
+
+    if (filterStudent === "Students") {
+      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStudent);
+    } else if (filterStudent === "Staff") {
+      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStaff);
+    } else {
+      CharacterfileredbyStatus = characterArray;
+    }
+    setCharacterArray(CharacterfileredbyStatus);
+  };*/
+
+ // Función para aplicar el filtro Student - Staff - All
+  const applyFilterHouse = (data) => {
+    if (filterHouse === "All") {
+      return data;
+    } else if (filterHouse === "Gryffindor") {
+      return data.filter((character) => character.house === "Gryffindor");
+    } else if (filterHouse === "Hufflepuff") {
+      return data.filter((character) => character.house === "Gryffindor");
+    } else if (filterHouse === "Ravenclaw") {
+      return data.filter((character) => character.house === "Gryffindor");
+    } else if (filterHouse === "Slytherin") {
+      return data.filter((character) => character.house === "Gryffindor");
+    } else {
+      return data;
+    }
+  };

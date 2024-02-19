@@ -5,13 +5,15 @@ import PropTypes from 'prop-types';
 import FilterbyName from './FilterbyCharacter';
 import FilterbyStudent from './FilterbyStudent';
 import wand from '../../images/varita.png';
+import FilterbyHouse from './FilterbyHouse';
 
-function Filters({ filterCharacter, filterStudent, filterHouse, handleFilterCharacter, handleFilterStudent, handleResetFilters, handleFilterHouse}) {
+function Filters({handleFilterCharacter, handleFilterStudent, handleResetFilters, handleFilterHouse}) {
     return (
       <form>
         <fieldset className='title--medium'>Filters:
-            <FilterbyName filterCharacter={filterCharacter} handleFilterCharacter={handleFilterCharacter} />
-            <FilterbyStudent filterStudent={filterStudent} handleFilterStudent={handleFilterStudent} filterHouse={filterHouse} handleFilterHouse={handleFilterHouse}/>
+            <FilterbyName handleFilterCharacter={handleFilterCharacter} />
+            <FilterbyStudent handleFilterStudent={handleFilterStudent}/>
+            <FilterbyHouse handleFilterHouse={handleFilterHouse}/>
             <button onClick={handleResetFilters}>Reset
               <img src={wand} alt="Reset wand" style={{ width: '20px', height: '20px' }} />
             </button>
