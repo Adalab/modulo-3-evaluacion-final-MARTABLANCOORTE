@@ -116,8 +116,8 @@ function App() {
           <Route
             path="/"
             element={
-              <div className="col2">
-                <div>
+              <div >
+                <div className = "filters"> 
                   <Filters
                     filterGender={filterGender}
                     filterAlive={filterAlive}
@@ -129,7 +129,7 @@ function App() {
                     handleResetFilters={handleResetFilters}
                   />
                 </div>
-                <div>
+                <div className = "List">
                   <CharacterList characterArray={filteredCharacters} />
                   {characterArray.length <= 0 && (
                     <p>
@@ -145,7 +145,15 @@ function App() {
             path="/character/:name" 
             element={
               <>
-                <CharacterDetail characterArray={characterArray} /> || <Notfound />
+                <CharacterDetail characterArray={characterArray} />
+              </>
+            }
+          />
+          <Route
+            path="/character/"
+            element={
+              <>
+                <Notfound/>
               </>
             }
           />

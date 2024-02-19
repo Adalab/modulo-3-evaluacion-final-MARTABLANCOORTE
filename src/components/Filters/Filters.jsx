@@ -10,14 +10,14 @@ import FilterbyHouse from './FilterbyHouse';
 function Filters({filterGender, filterAlive, handleFilterAlive,handleFilterCharacter, handleFilterStudent, handleResetFilters, handleFilterHouse, handleFilterGender}) {
     return (
       <form>
-        <fieldset className='title--medium'>Filters:
-            <FilterbyName handleFilterCharacter={handleFilterCharacter} />
+        <fieldset className="filters">Filters:
+            <FilterbyName  handleFilterCharacter={handleFilterCharacter} />
             <FilterbyStudent handleFilterStudent={handleFilterStudent}/>
             <FilterbyHouse handleFilterHouse={handleFilterHouse}/>
             <FilterbyGender filterGender={filterGender} handleFilterGender={handleFilterGender}/>
             <FilterbyAlive filterAlive={filterAlive} handleFilterAlive={handleFilterAlive}/>
-            <button onClick={handleResetFilters}>Reset
-              <img src={wand} alt="Reset wand" style={{ width: '20px', height: '20px' }} />
+            <button className="Button" onClick={handleResetFilters}>Reset
+              <img className="wand"src={wand} alt="Reset wand" style={{ width: '20px', height: '20px' }} />
             </button>
         </fieldset>
       </form>

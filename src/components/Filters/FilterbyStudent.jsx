@@ -10,7 +10,7 @@ function FilterByStudent({handleFilterStudent}) {
   
     return (
       <div className="col2 mt-1">
-        <fieldset>Status:
+        <fieldset className="filters__child">Status:
           <label htmlFor="student">
             <select name="student" id="student" onInput={handleInputStudent}>
                 <option value="All" >All Characters</option>

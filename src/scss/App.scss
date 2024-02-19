@@ -2,7 +2,8 @@
 @import './core/variables';
 
 .header{
-  display: flex;
+  margin: auto;
+  display: grid;
   width:40rem;
   height: 15rem;
   align-items: center;
@@ -55,4 +56,33 @@
   top: 0;
   left: 0;
   z-index: 2;
+}
+
+.filters{
+  width:100%;
+  border: none;
+  font-family: $hp;
+  font-size: xx-large;
+  color:gold;
+  display: flex;
+  align-items: center;
+  fieldset { border: none; font-size: x-large; color:gold; font-family:$hp; gap:2rem;}
+  label {border: none; font-size: x-large; color:gold; font-family:$hp;}
+  background-color: #740001;
+}
+
+.Button{
+  font-size: x-large;
+  color:black; 
+  font-family:$hp;
+  margin: auto;
+  gap:20rem;
+}
+
+.card{
+  border:solid black 2px;
+}
+
+.col2{
+  
 }
