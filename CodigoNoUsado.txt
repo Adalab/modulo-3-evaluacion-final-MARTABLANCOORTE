@@ -54,3 +54,22 @@
       });
     }
   };
+
+    //Función para el filtro de status (vivo o muerto):
+  const applyFilterAlive = (data) => {
+    if (filterAlive === "All") {
+      return data;
+    } else if (filterAlive === "alive") {
+      return data.filter((character) => character.alive === "true");
+    } else if (filterAlive === "dead") {
+      return data.filter((character) => character.alive === "false");
+    }
+  };
+
+   /*if (filterAlive.toString() === "All") {
+          return true;
+        } else if (filterAlive.toString() === "true") {
+          return character.alive;
+        } else if (filterAlive.toString() === "false") {
+          return !character.alive;
+        }*/

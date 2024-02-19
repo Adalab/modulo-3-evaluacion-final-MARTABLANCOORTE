@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 function FilterByAlive({ filterAlive, handleFilterAlive }) {
     
     const handleChangeAlive = (event) => {
-        event.preventDefault();
-        handleFilterAlive(event.currentTarget.id, event.currentTarget.checked);
+        handleFilterAlive(event.currentTarget.value);
     };
 
     return (
@@ -15,32 +14,32 @@ function FilterByAlive({ filterAlive, handleFilterAlive }) {
                 <input
                     type="checkbox"
                     name="status"
-                    id="alive"
-                    value="alive"
-                    checked={filterAlive === "alive"} //true
+                    id="Alive"
+                    value="Alive"
+                    checked={filterAlive === "Alive"}
                     onChange={handleChangeAlive} 
                 />
-                <label htmlFor="alive"> Alive</label>
+                <label htmlFor="Alive"> Alive</label>
                 
                 <input
                     type="checkbox"
                     name="status"
-                    id="dead"
-                    value="dead"
-                    checked={filterAlive === "dead"} //false
+                    id="Dead"
+                    value="Dead"
+                    checked={filterAlive === "Dead"}
                     onChange={handleChangeAlive}
                 />
-                <label htmlFor="dead"> Dead</label>
-        
+                <label htmlFor="Dead"> Dead</label>
+                
                 <input
                     type="checkbox"
                     name="status"
-                    id="allstatus"
-                    value="allstatus"
-                    checked={filterAlive === "all"}
+                    id="All"
+                    value="All"
+                    checked={filterAlive === "All"}
                     onChange={handleChangeAlive}
                 />
-                <label htmlFor="allstatus"> All</label>
+                <label htmlFor="All"> All</label>
             </div>
         </fieldset>
       </div>

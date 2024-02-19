@@ -1,8 +1,6 @@
 import "../scss/App.scss";
-
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Filters from "./Filters/Filters.jsx";
 import CharacterList from "./Characters/CharacterList.jsx";
 import CharacterDetail from "./Pages/CharacterDetail.jsx";
@@ -30,7 +28,7 @@ function App() {
         setCharacterArray(data);
         ls.set("characters", data);
       });
-    } else{
+    } else {
       setCharacterArray(ls.get("characters"));
     }
   }, []);
@@ -58,56 +56,46 @@ function App() {
     setfilterAlive(value);
   };
 
-  const filterbyName = (character) => character.name.toLowerCase().includes(filterCharacter.toLowerCase());
+  const filterbyName = (character) =>
+    character.name.toLowerCase().includes(filterCharacter.toLowerCase());
 
-  const filteredCharacters = 
-    characterArray
-      .filter(filterbyName)
-      .filter((character) => {
-        if (filterStudent === "Students") {
-          return character.hogwartsStudent;
-        } 
-        else if (filterStudent === "Staff") {
-          return character.hogwartsStaff;
-        } 
-        else {
-          return true;
-        }
-      })
-      .filter ((character) => {
-        if (filterHouse !== "All") {
-          return character.house === filterHouse;
-        } 
-        else {
-          return true;
-        }
-      })
-      .filter ((character) => {
-        if (filterGender === "female" || filterGender === "male") {
-          return character.gender === filterGender;
-        }
-        else {
-          return true;
-        }
-      });
-
-  /*//Función para el filtro de status (vivo o muerto):
-  const applyFilterAlive = (data) => {
-    if (filterAlive === "All") {
-      return data;
-    } else if (filterAlive === "alive") {
-      return data.filter((character) => character.alive === "true");
-    } else if (filterAlive === "dead") {
-      return data.filter((character) => character.alive === "false");
-    }
-  };*/
+  const filteredCharacters = characterArray
+    .filter(filterbyName)
+    .filter((character) => {
+      if (filterStudent === "Students") {
+        return character.hogwartsStudent;
+      } else if (filterStudent === "Staff") {
+        return character.hogwartsStaff;
+      } else {
+        return true;
+      }
+    })
+    .filter((character) => {
+      if (filterHouse !== "All") {
+        return character.house === filterHouse;
+      } else {
+        return true;
+      }
+    })
+    .filter((character) => {
+      if (filterGender === "female" || filterGender === "male") {
+        return character.gender === filterGender;
+      } else {
+        return true;
+      }
+    })
+    .filter((character) => {
+      return (
+        (filterAlive === "Alive" && character.alive) ||
+        (filterAlive === "Dead" && !character.alive) ||
+        (filterAlive === "All")
+      );
+    })
+    .sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
 
   // 4. variables para el html
-
-  /*const datacharacters = [...characterArray].sort((a, b) => {
-    return -a.name.localeCompare(b.name);
-  });
-  */
 
   //Para los filtros:
 
@@ -149,9 +137,13 @@ function App() {
                   />
                 </div>
                 <div>
-                  <CharacterList characterArray={filteredCharacters}/>
-                  {characterArray.length <= 0 && <p> There is no character with that name. Please try again </p>}
-
+                  <CharacterList characterArray={filteredCharacters} />
+                  {characterArray.length <= 0 && (
+                    <p>
+                      {" "}
+                      There is no character with that name. Please try again{" "}
+                    </p>
+                  )}
                 </div>
               </div>
             }
