@@ -14,7 +14,7 @@ import Notfound from './Pages/Notfound.jsx';
 
 function App() {
   // 1. Variables de estado
-  const [characters, setcharacters] = useState(ls.get("characters", []));
+  const [characterArray, setCharacterArray] = useState([]);
   const [filterCharacter, setfilterCharacter] = useState("");
   const [filterStudent, setfilterStudent] = useState("all");
   const [filterHouse, setfilterHouse] = useState("all");
@@ -27,9 +27,12 @@ function App() {
     // Cuando carga la página
     if (!ls.includes("characters")) {
       fetchCharacters().then((data) => {
-        setcharacters(data);
+        setCharacterArray(data);
         ls.set("characters", data);
       });
+    }
+    else {
+      setCharacterArray(ls.get("characters"))
     }
   }, []);
 
@@ -38,6 +41,7 @@ function App() {
   // Función para manejar el cambio en los filtros
   const handleFilterCharacter = (value) => {
     setfilterCharacter(value);
+    applyFilterName();
   };
 
   const handleFilterStudent = (value) => {
@@ -89,18 +93,17 @@ function App() {
   };
 
   // Función para aplicar el filtro por nombre
-  const applyFilterName = (data) => {
+  const applyFilterName = () => {
     if (!filterCharacter) {
       return <p>There is no character with that name. Please try again </p>;
     } 
     else {
-      return data.filter((character) =>
-        character.name.toLowerCase().includes(filterCharacter.toLowerCase())
-      );
+     const CharacterfilteredbyName = characterArray.filter((character) => character.name.toLowerCase().includes(filterCharacter.toLowerCase()))
+     setCharacterArray (CharacterfilteredbyName);
     }
   };
 
-  // Función para el filtro de genero:
+  // Función para el filtrofilteredCharacter de genero:
   const applyFilterGender = (data) => {
     if (filterGender === "all") {
       return data;
@@ -130,14 +133,14 @@ function App() {
 
   // 4. variables para el html
 
-  const datacharacters = [...characters].sort((a,b) =>{
-    return a.name.localeCompare(b.name)
+  const datacharacters = [...characterArray].sort((a,b) =>{
+   return -a.name.localeCompare(b.name)
   });
 
   //Para los filtros:
 
   //filtros - uno engloba al otro:
-  const filteredCharacterbyName = applyFilterName(
+  /*const filteredCharacterbyName = applyFilterName(
     datacharacters,
     setfilterCharacter
   );
@@ -156,11 +159,11 @@ function App() {
   const filteredCharacters = applyFilterAlive(
     filteredCharactersByGender,
     setfilterAlive
-  );
+  );*/
 
   //para la pagina de Details:
   const findCharacter = (id) => {
-    return characters.find((character) => character.id === id);
+    return characterArray.find((character) => character.id === id);
   };
 
   // Reset: resetear los filtros: 
@@ -199,7 +202,7 @@ function App() {
                   />
                 </div>
                 <div>
-                  <CharacterList characters={filteredCharacters} />
+                  <CharacterList characterArray={characterArray} />
                 </div>
               </div>
             }

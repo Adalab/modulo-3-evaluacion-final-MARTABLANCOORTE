@@ -1,10 +1,9 @@
 import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 
-function FilterByCharacter(handleFilterCharacter) {
+function FilterByCharacter({handleFilterCharacter}) {
 
   const handleInputCharacter = (event) => {
-    event.preventDefault();
     handleFilterCharacter(event.currentTarget.value);
   };
 
@@ -12,7 +11,7 @@ function FilterByCharacter(handleFilterCharacter) {
     <div className="col2 mt-1">
       <fieldset>
         <label> Character Name:
-          <input type="text" placeholder="Harry Potter" onInput={handleInputCharacter}/>
+          <input type="text" placeholder="Harry Potter" onChange={handleInputCharacter}/>
         </label>
       </fieldset>
     </div>

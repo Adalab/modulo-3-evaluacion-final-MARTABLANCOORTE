@@ -78,7 +78,7 @@ function CharacterDetail({ findCharacter }) {
 }
 
 CharacterDetail.propTypes = {
-  findCharacter: PropTypes.func.isRequire
+  findCharacter: PropTypes.func
 };
 
 export default CharacterDetail;

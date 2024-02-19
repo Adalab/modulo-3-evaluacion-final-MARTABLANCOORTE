@@ -1,6 +1,13 @@
 @import './core/reset';
 @import './core/variables';
 
+.header{
+  display: flex;
+  width:40rem;
+  height: 15rem;
+  align-items: center;
+}
+
 .link {
     display: none;
     display: inline;
