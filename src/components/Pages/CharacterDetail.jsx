@@ -11,6 +11,7 @@ import pergamino from '../../images/parchment.jpg';
 import sello from '../../images/sello.png';
 import aliveImage from '../../images/corazon.png';
 import deadImage from '../../images/cementerio.png';
+import defaultPhoto from '../../images/HogwartsEscudo.png';
 
 function CharacterDetail({characterArray}) {
   
@@ -24,13 +25,24 @@ function CharacterDetail({characterArray}) {
 
 
   // Define las imágenes para las casas y el escudo de Staff: 
-    const houseImage = {
-      Gryffindor: GImage,
-      Hufflepuff: HImage,
-      Ravenclaw:RImage,
-      Slytherin: SImage,
-      Staff:StaffImage,
-    };
+    let houseImage = StaffImage;
+     
+      switch (character.house){
+        case "Gryffindor":
+          houseImage = GImage;
+          break;
+        case "Hufflepuff":
+          houseImage = HImage;
+          break;
+        case "Ravenclaw":
+          houseImage = RImage;
+          break;
+        case "Slytherin":
+          houseImage = SImage;
+          break;
+        default: 
+          houseImage = StaffImage;
+      }
 
   return (
     <div className="details">
@@ -44,7 +56,7 @@ function CharacterDetail({characterArray}) {
       <div className="image-container">
         <img
             className='image-front'
-            src={character.image}
+            src={character.image || defaultPhoto} 
             alt='Photo Character'
             title='Photo Character'
         />
@@ -74,7 +86,7 @@ function CharacterDetail({characterArray}) {
         <Link to="/">Come back</Link>
         <img // Obtén la imagen según la casa
             className='card__img'
-            src={houseImage[character.house.toLowerCase()]}
+            src= {houseImage}
             alt='House Character'
             title='House Character'
         />
