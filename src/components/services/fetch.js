@@ -18,6 +18,7 @@ export function fetchCharacters() {
           wandWood: character.wand.wood,
           wandCore: character.wand.core,
           wandLength: character.wand.wood.length,
+          otherNames: character.alternate_names,
         };
       });
     });

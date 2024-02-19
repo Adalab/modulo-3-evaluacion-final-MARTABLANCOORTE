@@ -1,14 +1,15 @@
 import "../scss/App.scss";
 import { Link } from 'react-router-dom';
 import PropTypes  from "prop-types";
+import defaultPhoto from '../images/HogwartsEscudo.png'; 
 
 function CharacterCard ({ character }) {
   return (
-    <Link to={"/character/"+ character.id}>
+    <Link to={"/character/"+ character.name} >
     <div className="details">
         <img
           className='card__img'
-          src={character.image}
+          src={character.image || defaultPhoto}
           alt='Photo Character'
           title='Photo Character'
         />

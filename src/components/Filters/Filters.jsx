@@ -4,8 +4,9 @@ import FilterbyAlive from './FilterbyAlive';
 import FilterbyGender from './FilterbyGender';
 import FilterbyName from './FilterbyName';
 import FilterbyStudent from './FilterbyStudent';
+import wand from './images/varita.png'
 
-function Filters({ filterCharacter, filterStudent, filterGender, filterAlive, filterHouse, handleFilterCharacter, handleFilterStudent, handleFilterGender, handleFilterAlive, handleFilterHouse}) {
+function Filters({ filterCharacter, filterStudent, filterGender, filterAlive, filterHouse, handleFilterCharacter, handleFilterStudent, handleFilterGender, handleFilterAlive, handleFilterHouse, handleResetFilters}) {
     return (
       <form>
         <fieldset className='title--medium'>Filters:
@@ -13,6 +14,9 @@ function Filters({ filterCharacter, filterStudent, filterGender, filterAlive, fi
             <FilterbyStudent filterStudent={filterStudent} handleFilterStudent={handleFilterStudent} filterHouse={filterHouse} handleFilterHouse={handleFilterHouse}/>
             <FilterbyGender filterGender={filterGender} handleChangeFilterGender={handleFilterGender } />
             <FilterbyAlive filterAlive={filterAlive} handleChangeFilterAlive={handleFilterAlive}/>
+            <button onClick={handleResetFilters}>Reset
+              <img src={wand} alt="Reset wand" />
+            </button>
         </fieldset>
       </form>
     );

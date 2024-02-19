@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 function FilterByHouse({ handleFilterHouse }) {
     
     const handleInputHouse = (event) => {
+      event.preventDefault();
       handleFilterHouse(event.currentTarget.value);
     };
   

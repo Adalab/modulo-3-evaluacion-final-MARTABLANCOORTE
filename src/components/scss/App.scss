@@ -32,3 +32,20 @@
 .labelCity{
       display: block;
 }
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-back {
+  position: relative;
+  z-index: 1;
+}
+
+.image-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}

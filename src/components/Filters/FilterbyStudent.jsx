@@ -5,6 +5,7 @@ import FilterbyHouse from './FilterbyHouse';
 function FilterByStudent({handleFilterStudent, handleFilterHouse }) {
     
     const handleInputStudent = (event) => {
+        event.preventDefault();
         handleFilterStudent(event.currentTarget.value);
     };
   

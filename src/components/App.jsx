@@ -10,6 +10,7 @@ import ls from "../components/services/LocalStorage.js";
 import fetchCharacters from "../components/services/fetch.js";
 import Footer from "./Pages/footer.jsx";
 import Header from "./Pages/header.jsx";
+import Notfound from './Pages/Notfound.jsx';
 
 function App() {
   // 1. Variables de estado
@@ -19,7 +20,7 @@ function App() {
   const [filterHouse, setfilterHouse] = useState("all");
   const [filterGender, setfilterGender] = useState("all");
   const [filterAlive, setfilterAlive] = useState("all");
-
+  
   // 2. useEffect
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
 
   // 3. funciones de eventos
 
-  // Función para manejar el cambio en el filtro de estudiante
+  // Función para manejar el cambio en los filtros
   const handleFilterCharacter = (value) => {
     setfilterCharacter(value);
   };
@@ -57,13 +58,13 @@ function App() {
 
   // Función para aplicar el filtro Student - Staff - All
   const applyFilterStudent = (data) => {
-    if (setfilterStudent === "All") {
+    if (filterStudent === "All") {
       return data;
-    } else if (setfilterStudent === "Students") {
+    } else if (filterStudent === "Students") {
       return data.filter(
         (character) => character.hogwartsStudent === "Student"
       );
-    } else if (setfilterStudent === "Staff") {
+    } else if (filterStudent === "Staff") {
       return data.filter((character) => character.hogwartsStaff === "Staff");
     } else {
       return data;
@@ -72,15 +73,15 @@ function App() {
 
   // Función para aplicar el filtro Student - Staff - All
   const applyFilterHouse = (data) => {
-    if (setfilterHouse === "All") {
+    if (filterHouse === "All") {
       return data;
-    } else if (setfilterHouse === "Gryffindor") {
+    } else if (filterHouse === "Gryffindor") {
       return data.filter((character) => character.house === "Gryffindor");
-    } else if (setfilterHouse === "Hufflepuff") {
+    } else if (filterHouse === "Hufflepuff") {
       return data.filter((character) => character.house === "Gryffindor");
-    } else if (setfilterHouse === "Ravenclaw") {
+    } else if (filterHouse === "Ravenclaw") {
       return data.filter((character) => character.house === "Gryffindor");
-    } else if (setfilterHouse === "Slytherin") {
+    } else if (filterHouse === "Slytherin") {
       return data.filter((character) => character.house === "Gryffindor");
     } else {
       return data;
@@ -88,26 +89,26 @@ function App() {
   };
 
   // Función para aplicar el filtro por nombre
-  const applyFilterName = (data, setfilterCharacter) => {
-    if (!setfilterCharacter) {
+  const applyFilterName = (data, filterCharacter) => {
+    if (!filterCharacter) {
       return <p>There is no character with that name. Please try again </p>;
     } 
     else {
       return data.filter((character) =>
-        character.name.toLowerCase().includes(setfilterCharacter.toLowerCase())
+        character.name.toLowerCase().includes(filterCharacter.toLowerCase())
       );
     }
   };
 
   // Función para el filtro de genero:
-  const applyFilterGender = (data, setfilterGender) => {
-    if (setfilterGender === "all") {
+  const applyFilterGender = (data, filterGender) => {
+    if (filterGender === "all") {
       return data;
     } else {
       return data.filter((character) => {
-        if (setfilterGender === "female") {
+        if (filterGender === "female") {
           return character.gender === "female";
-        } else if (setfilterGender === "male") {
+        } else if (filterGender === "male") {
           return character.gender === "male";
         }
       });
@@ -116,20 +117,22 @@ function App() {
 
   //Función para el filtro de status (vivo o muerto):
   const applyFilterAlive = (data) => {
-    if (setfilterAlive === "All") {
+    if (filterAlive === "All") {
       return data;
     } 
-    else if (setfilterAlive === "alive") {
+    else if (filterAlive === "alive") {
       return data.filter((character) => character.alive === "true")
     } 
-    else if (setfilterAlive === "dead") 
+    else if (filterAlive === "dead") 
       {return data.filter((character) => character.alive === "false")
     }
   };
 
   // 4. variables para el html
 
-  const datacharacters = [...characters];
+  const datacharacters = [...characters].sort((a,b) =>{
+    return a.name.localeCompare(b.name)
+  });
 
   //Para los filtros:
 
@@ -160,6 +163,15 @@ function App() {
     return characters.find((character) => character.id === id);
   };
 
+  // Reset: resetear los filtros: 
+  const handleResetFilters = () => {
+    setfilterCharacter("");
+    setfilterStudent("all");
+    setfilterHouse("Gryffindor");
+    setfilterGender("all");
+    setfilterAlive("all");
+  }
+
   // 5. Html en el return
 
   return (
@@ -183,6 +195,7 @@ function App() {
                     handleFilterHouse={handleFilterHouse}
                     handleFilterGender={handleFilterGender}
                     handleFilterAlive={handleFilterAlive}
+                    handleResetFilters = {handleResetFilters}
                   />
                 </div>
                 <div>
@@ -193,7 +206,7 @@ function App() {
           />
           <Route
             path="/character/:id"
-            element={<CharacterDetail findCharacter={findCharacter} />}
+            element={<CharacterDetail findCharacter={findCharacter} /> || <Notfound/>}
           />
         </Routes>
       </main>

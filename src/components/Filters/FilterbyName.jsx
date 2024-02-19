@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function FilterByCharacter(handleFilterCharacter) {
 
   const handleInputCharacter = (event) => {
+    event.preventDefault();
     handleFilterCharacter(event.currentTarget.value);
   };
 

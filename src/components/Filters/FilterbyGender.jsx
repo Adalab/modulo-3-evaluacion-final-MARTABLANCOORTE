@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function FilterByGender({ filterGender, handleFilterGender }) {
     
     const handleChangeGender = (event) => {
+      event.preventDefault();
       handleFilterGender(event.currentTarget.id, event.currentTarget.value);
     };
   

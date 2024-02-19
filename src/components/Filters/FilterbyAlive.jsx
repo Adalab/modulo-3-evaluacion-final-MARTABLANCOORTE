@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function FilterByAlive({ filterAlive, handleFilterAlive }) {
     
     const handleChangeAlive = (event) => {
+        event.preventDefault();
         handleFilterAlive(event.currentTarget.id, event.currentTarget.checked);
     };
 
@@ -17,7 +18,7 @@ function FilterByAlive({ filterAlive, handleFilterAlive }) {
                     id="alive"
                     value="alive"
                     checked={filterAlive === "alive"} //true
-                    onInput={handleChangeAlive}
+                    onInput={handleChangeAlive} 
                 />
                 <label htmlFor="alive"> Alive</label>
                 
