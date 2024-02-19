@@ -97,13 +97,6 @@ function App() {
 
   // 4. variables para el html
 
-  //Para los filtros:
-
-  //para la pagina de Details:
-  const findCharacter = (id) => {
-    return characterArray.find((character) => character.id === id);
-  };
-
   // Reset: resetear los filtros:
   const handleResetFilters = () => {
     setfilterCharacter("");
@@ -149,9 +142,11 @@ function App() {
             }
           />
           <Route
-            path="/character/:id"
+            path="/character/:name" 
             element={
-              <CharacterDetail findCharacter={findCharacter} /> || <Notfound />
+              <>
+                <CharacterDetail characterArray={characterArray} /> || <Notfound />
+              </>
             }
           />
         </Routes>
