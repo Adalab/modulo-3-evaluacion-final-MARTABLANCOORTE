@@ -1,6 +1,3 @@
-
-![Sello](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/f7264cbc-ef37-4cf8-9522-4d4f7a32402d)
-
 WELCOME TO PLATFORM 9-3/4 TO HOGWARTS!!
 
 ![Train](https://github.com/Adalab/modulo-3-evaluacion-final-MARTABLANCOORTE/assets/147755354/a685b301-8afb-4283-a89a-9cf318ce4292)
