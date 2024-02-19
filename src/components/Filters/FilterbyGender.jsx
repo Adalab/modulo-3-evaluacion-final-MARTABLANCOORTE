@@ -1,26 +1,25 @@
-import '../../scss/App.scss';
-import PropTypes from 'prop-types';
+import "../../scss/App.scss";
+import PropTypes from "prop-types";
 
 function FilterByGender({ filterGender, handleFilterGender }) {
-    
-    const handleChangeGender = (event) => {
-      event.preventDefault();
-      handleFilterGender(event.currentTarget.id, event.currentTarget.value);
-    };
-  
-    return (
-      <div className="col2 mt-1">
-        <fieldset>Gender:
+  const handleChangeGender = (event) => {
+    handleFilterGender(event.currentTarget.id, event.currentTarget.value);
+  };
+
+  return (
+    <div className="col2 mt-1">
+      <fieldset>
+        Gender:
         <div>
           <input
             type="radio"
             name="gender"
-            id="all"
-            value="all"
-            checked={filterGender === "all"}
+            id="All"
+            value="All"
+            checked={filterGender === "All"}
             onChange={handleChangeGender}
           />
-          <label htmlFor="all"> All</label>
+          <label htmlFor="All"> All</label>
 
           <input
             type="radio"
@@ -31,7 +30,7 @@ function FilterByGender({ filterGender, handleFilterGender }) {
             onChange={handleChangeGender}
           />
           <label htmlFor="female"> Female</label>
-          
+
           <input
             type="radio"
             name="gender"
@@ -41,7 +40,6 @@ function FilterByGender({ filterGender, handleFilterGender }) {
             onChange={handleChangeGender}
           />
           <label htmlFor="male"> Male</label>
-
         </div>
       </fieldset>
     </div>
@@ -51,6 +49,6 @@ function FilterByGender({ filterGender, handleFilterGender }) {
 FilterByGender.propTypes = {
   filterGender: PropTypes.string,
   handleFilterGender: PropTypes.func,
-}
+};
 
-export default FilterByGender
+export default FilterByGender;

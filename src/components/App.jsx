@@ -48,8 +48,6 @@ function App() {
 
   const handleFilterHouse = (value) => {
     setfilterHouse(value);
-
-    console.log(value);
   };
 
   const handleFilterGender = (value) => {
@@ -77,29 +75,21 @@ function App() {
         }
       })
       .filter ((character) => {
-        console.log(filterHouse,character.house);
         if (filterHouse !== "All") {
           return character.house === filterHouse;
         } 
         else {
           return true;
         }
-      });
-
-  /*// Función para el filtrofilteredCharacter de genero:
-  const applyFilterGender = (data) => {
-    if (filterGender === "all") {
-      return data;
-    } else {
-      return data.filter((character) => {
-        if (filterGender === "female") {
-          return character.gender === "female";
-        } else if (filterGender === "male") {
-          return character.gender === "male";
+      })
+      .filter ((character) => {
+        if (filterGender === "female" || filterGender === "male") {
+          return character.gender === filterGender;
+        }
+        else {
+          return true;
         }
       });
-    }
-  };*/
 
   /*//Función para el filtro de status (vivo o muerto):
   const applyFilterAlive = (data) => {
@@ -129,10 +119,10 @@ function App() {
   // Reset: resetear los filtros:
   const handleResetFilters = () => {
     setfilterCharacter("");
-    setfilterStudent("all");
+    setfilterStudent("All");
     setfilterHouse("Gryffindor");
-    setfilterGender("all");
-    setfilterAlive("all");
+    setfilterGender("All");
+    setfilterAlive("All");
   };
 
   // 5. Html en el return
@@ -148,9 +138,6 @@ function App() {
               <div className="col2">
                 <div>
                   <Filters
-                    filterCharacter={filterCharacter}
-                    filterStudent={filterStudent}
-                    filterHouse={filterHouse}
                     filterGender={filterGender}
                     filterAlive={filterAlive}
                     handleFilterCharacter={handleFilterCharacter}

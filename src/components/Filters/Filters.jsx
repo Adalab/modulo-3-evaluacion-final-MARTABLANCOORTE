@@ -1,19 +1,20 @@
 import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 //import FilterbyAlive from './FilterbyAlive';
-//import FilterbyGender from './FilterbyGender';
+import FilterbyGender from './FilterbyGender';
 import FilterbyName from './FilterbyCharacter';
 import FilterbyStudent from './FilterbyStudent';
 import wand from '../../images/varita.png';
 import FilterbyHouse from './FilterbyHouse';
 
-function Filters({handleFilterCharacter, handleFilterStudent, handleResetFilters, handleFilterHouse}) {
+function Filters({filterGender,handleFilterCharacter, handleFilterStudent, handleResetFilters, handleFilterHouse, handleFilterGender}) {
     return (
       <form>
         <fieldset className='title--medium'>Filters:
             <FilterbyName handleFilterCharacter={handleFilterCharacter} />
             <FilterbyStudent handleFilterStudent={handleFilterStudent}/>
             <FilterbyHouse handleFilterHouse={handleFilterHouse}/>
+            <FilterbyGender filterGender={filterGender} handleFilterGender={handleFilterGender}/>
             <button onClick={handleResetFilters}>Reset
               <img src={wand} alt="Reset wand" style={{ width: '20px', height: '20px' }} />
             </button>
@@ -36,8 +37,8 @@ Filters.propTypes = {
   handleFilterHouse: PropTypes.func,
 }
 
-//filterGender, filterAlive, handleFilterGender, handleFilterAlive
-//<FilterbyGender filterGender={filterGender} handleChangeFilterGender={handleFilterGender }/>
+//filterGender, filterAlive, handleFilterAlive
+//
 //<FilterbyAlive filterAlive={filterAlive} handleChangeFilterAlive={handleFilterAlive}/>
 
 export default Filters;

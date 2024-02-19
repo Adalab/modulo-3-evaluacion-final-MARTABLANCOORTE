@@ -39,3 +39,18 @@
       return data;
     }
   };
+
+    // Función para el filtrofilteredCharacter de genero:
+  const applyFilterGender = (data) => {
+    if (filterGender === "all") {
+      return data;
+    } else {
+      return data.filter((character) => {
+        if (filterGender === "female") {
+          return character.gender === "female";
+        } else if (filterGender === "male") {
+          return character.gender === "male";
+        }
+      });
+    }
+  };

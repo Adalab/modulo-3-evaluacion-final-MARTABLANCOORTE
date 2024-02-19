@@ -1,7 +1,6 @@
 export async function fetchCharacters() {
   const response = await fetch('https://hp-api.onrender.com/api/characters');
   const responseData = await response.json();
-  console.log(responseData);
   return responseData.map((character) => {
     return {
       id: character.id,
