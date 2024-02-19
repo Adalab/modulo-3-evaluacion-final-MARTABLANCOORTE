@@ -1,16 +1,16 @@
-import '../scss/App.scss';
+import "../scss/App.scss";
 
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Filters from './Filters/Filters.jsx';
-import CharacterList from './Characters/CharacterList.jsx';
-import CharacterDetail from './Pages/CharacterDetail.jsx';
-import ls from '../services/LocalStorage.js';
-import fetchCharacters from '../services/fetch.js';
-import Footer from './Pages/footer.jsx';
-import Header from './Pages/header.jsx';
-import Notfound from './Pages/Notfound.jsx';
+import Filters from "./Filters/Filters.jsx";
+import CharacterList from "./Characters/CharacterList.jsx";
+import CharacterDetail from "./Pages/CharacterDetail.jsx";
+import ls from "../services/LocalStorage.js";
+import fetchCharacters from "../services/fetch.js";
+import Footer from "./Pages/footer.jsx";
+import Header from "./Pages/header.jsx";
+import Notfound from "./Pages/Notfound.jsx";
 
 function App() {
   // 1. Variables de estado
@@ -20,7 +20,7 @@ function App() {
   const [filterHouse, setfilterHouse] = useState("all");
   const [filterGender, setfilterGender] = useState("all");
   const [filterAlive, setfilterAlive] = useState("all");
-  
+
   // 2. useEffect
 
   useEffect(() => {
@@ -30,9 +30,8 @@ function App() {
         setCharacterArray(data);
         ls.set("characters", data);
       });
-    }
-    else {
-      setCharacterArray(ls.get("characters"))
+    } else {
+      setCharacterArray(ls.get("characters"));
     }
   }, []);
 
@@ -46,6 +45,7 @@ function App() {
 
   const handleFilterStudent = (value) => {
     setfilterStudent(value);
+    applyFilterStudent (value);
   };
 
   const handleFilterHouse = (value) => {
@@ -60,22 +60,32 @@ function App() {
     setfilterAlive(value);
   };
 
-  // Función para aplicar el filtro Student - Staff - All
-  const applyFilterStudent = (data) => {
-    if (filterStudent === "All") {
-      return data;
-    } else if (filterStudent === "Students") {
-      return data.filter(
-        (character) => character.hogwartsStudent === "Student"
+  // Función para aplicar el filtro por nombre
+  const applyFilterName = () => {
+    if (filterCharacter) {
+      const CharacterfilteredbyName = characterArray.filter((character) =>
+        character.name.toLowerCase().includes(filterCharacter.toLowerCase())
       );
-    } else if (filterStudent === "Staff") {
-      return data.filter((character) => character.hogwartsStaff === "Staff");
-    } else {
-      return data;
+      setCharacterArray(CharacterfilteredbyName);
     }
   };
 
+
   // Función para aplicar el filtro Student - Staff - All
+  const applyFilterStudent = (filterStudent) => {
+    let CharacterfileredbyStatus;
+
+    if (filterStudent === "Students") {
+      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStudent );
+    } else if (filterStudent === "Staff") {
+      CharacterfileredbyStatus = characterArray.filter((character) => character.hogwartsStaff);
+    } else {
+      CharacterfileredbyStatus = characterArray;
+    }
+    setCharacterArray(CharacterfileredbyStatus);
+  };
+
+  /*// Función para aplicar el filtro Student - Staff - All
   const applyFilterHouse = (data) => {
     if (filterHouse === "All") {
       return data;
@@ -90,20 +100,9 @@ function App() {
     } else {
       return data;
     }
-  };
+  };*/
 
-  // Función para aplicar el filtro por nombre
-  const applyFilterName = () => {
-    if (!filterCharacter) {
-      return <p>There is no character with that name. Please try again </p>;
-    } 
-    else {
-     const CharacterfilteredbyName = characterArray.filter((character) => character.name.toLowerCase().includes(filterCharacter.toLowerCase()))
-     setCharacterArray (CharacterfilteredbyName);
-    }
-  };
-
-  // Función para el filtrofilteredCharacter de genero:
+  /*// Función para el filtrofilteredCharacter de genero:
   const applyFilterGender = (data) => {
     if (filterGender === "all") {
       return data;
@@ -116,26 +115,25 @@ function App() {
         }
       });
     }
-  };
+  };*/
 
-  //Función para el filtro de status (vivo o muerto):
+  /*//Función para el filtro de status (vivo o muerto):
   const applyFilterAlive = (data) => {
     if (filterAlive === "All") {
       return data;
-    } 
-    else if (filterAlive === "alive") {
-      return data.filter((character) => character.alive === "true")
-    } 
-    else if (filterAlive === "dead") 
-      {return data.filter((character) => character.alive === "false")
+    } else if (filterAlive === "alive") {
+      return data.filter((character) => character.alive === "true");
+    } else if (filterAlive === "dead") {
+      return data.filter((character) => character.alive === "false");
     }
-  };
+  };*/
 
   // 4. variables para el html
 
-  const datacharacters = [...characterArray].sort((a,b) =>{
-   return -a.name.localeCompare(b.name)
+  /*const datacharacters = [...characterArray].sort((a, b) => {
+    return -a.name.localeCompare(b.name);
   });
+  */
 
   //Para los filtros:
 
@@ -166,20 +164,20 @@ function App() {
     return characterArray.find((character) => character.id === id);
   };
 
-  // Reset: resetear los filtros: 
+  // Reset: resetear los filtros:
   const handleResetFilters = () => {
     setfilterCharacter("");
     setfilterStudent("all");
     setfilterHouse("Gryffindor");
     setfilterGender("all");
     setfilterAlive("all");
-  }
+  };
 
   // 5. Html en el return
 
   return (
     <div className="page">
-      <Header/>
+      <Header />
       <main>
         <Routes>
           <Route
@@ -198,22 +196,26 @@ function App() {
                     handleFilterHouse={handleFilterHouse}
                     handleFilterGender={handleFilterGender}
                     handleFilterAlive={handleFilterAlive}
-                    handleResetFilters = {handleResetFilters}
+                    handleResetFilters={handleResetFilters}
                   />
                 </div>
                 <div>
-                  <CharacterList characterArray={characterArray} />
+                  <CharacterList characterArray={characterArray}/>
+                  {characterArray.length <= 0 && <p> There is no character with that name. Please try again </p>}
+
                 </div>
               </div>
             }
           />
           <Route
             path="/character/:id"
-            element={<CharacterDetail findCharacter={findCharacter} /> || <Notfound/>}
+            element={
+              <CharacterDetail findCharacter={findCharacter} /> || <Notfound />
+            }
           />
         </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
