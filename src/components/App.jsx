@@ -1,15 +1,15 @@
-import "./scss/App.scss";
+import '../scss/App.scss';
 
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Filters from "./Filters/Filters";
-import CharacterList from "./Characters/CharacterList";
-import CharacterDetail from "./Pages/CharacterDetail";
-import ls from "../components/services/LocalStorage.js";
-import fetchCharacters from "../components/services/fetch.js";
-import Footer from "./Pages/footer.jsx";
-import Header from "./Pages/header.jsx";
+import Filters from './Filters/Filters.jsx';
+import CharacterList from './Characters/CharacterList.jsx';
+import CharacterDetail from './Pages/CharacterDetail.jsx';
+import ls from '../services/LocalStorage.js';
+import fetchCharacters from '../services/fetch.js';
+import Footer from './Pages/footer.jsx';
+import Header from './Pages/header.jsx';
 import Notfound from './Pages/Notfound.jsx';
 
 function App() {
@@ -89,7 +89,7 @@ function App() {
   };
 
   // Función para aplicar el filtro por nombre
-  const applyFilterName = (data, filterCharacter) => {
+  const applyFilterName = (data) => {
     if (!filterCharacter) {
       return <p>There is no character with that name. Please try again </p>;
     } 
@@ -101,7 +101,7 @@ function App() {
   };
 
   // Función para el filtro de genero:
-  const applyFilterGender = (data, filterGender) => {
+  const applyFilterGender = (data) => {
     if (filterGender === "all") {
       return data;
     } else {
@@ -139,7 +139,7 @@ function App() {
   //filtros - uno engloba al otro:
   const filteredCharacterbyName = applyFilterName(
     datacharacters,
-    setfilterStudent
+    setfilterCharacter
   );
   const filteredCharactersByStudent = applyFilterStudent(
     filteredCharacterbyName,

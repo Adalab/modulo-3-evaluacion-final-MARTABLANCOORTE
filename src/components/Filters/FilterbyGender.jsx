@@ -1,4 +1,4 @@
-import "../scss/App.scss";
+import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 
 function FilterByGender({ filterGender, handleFilterGender }) {
@@ -18,7 +18,7 @@ function FilterByGender({ filterGender, handleFilterGender }) {
             id="all"
             value="all"
             checked={filterGender === "all"}
-            onInput={handleChangeGender}
+            onChange={handleChangeGender}
           />
           <label htmlFor="all"> All</label>
 
@@ -28,7 +28,7 @@ function FilterByGender({ filterGender, handleFilterGender }) {
             id="female"
             value="female"
             checked={filterGender === "female"}
-            onInput={handleChangeGender}
+            onChange={handleChangeGender}
           />
           <label htmlFor="female"> Female</label>
           
@@ -38,7 +38,7 @@ function FilterByGender({ filterGender, handleFilterGender }) {
             id="male"
             value="male"
             checked={filterGender === "male"}
-            onInput={handleChangeGender}
+            onChange={handleChangeGender}
           />
           <label htmlFor="male"> Male</label>
 

@@ -1,4 +1,4 @@
-import "../scss/App.scss";
+import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 import FilterbyHouse from './FilterbyHouse';
 

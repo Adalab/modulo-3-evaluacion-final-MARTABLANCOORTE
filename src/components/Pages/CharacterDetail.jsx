@@ -1,15 +1,16 @@
-import "../scss/App.scss";
+import '../../scss/App.scss';
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom"
-import GImage from '../images/gryffindorescudo.jpg'
-import SImage from '../images/slytherinescudo.jpg'
-import HImage from '../images/Hufflepuffescudo.jpg'
-import RImage from '../images/ravenclawescudo.jpg'
-import StaffImage from '../images/HogwartsEscudo.png'
-import pergamino from '../images/parchment.jpg'
-import sello from '../images/sello.png'
-import aliveImage from '../images/corazon.png'
-import deadImage from '../images/cementerio.png'
+import { useParams } from "react";
+import { Link } from "react-router-dom";
+import GImage from '../../images/gryffindorescudo.jpg';
+import SImage from '../../images/slytherinescudo.jpg';
+import HImage from '../../images/Hufflepuffescudo.jpg';
+import RImage from '../../images/ravenclawescudo.jpg';
+import StaffImage from '../../images/HogwartsEscudo.png';
+import pergamino from '../../images/parchment.jpg';
+import sello from '../../images/sello.png';
+import aliveImage from '../../images/corazon.png';
+import deadImage from '../../images/cementerio.png';
 
 function CharacterDetail({ findCharacter }) {
 

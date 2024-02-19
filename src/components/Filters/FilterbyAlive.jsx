@@ -1,4 +1,4 @@
-import "../scss/App.scss";
+import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 
 function FilterByAlive({ filterAlive, handleFilterAlive }) {
@@ -18,7 +18,7 @@ function FilterByAlive({ filterAlive, handleFilterAlive }) {
                     id="alive"
                     value="alive"
                     checked={filterAlive === "alive"} //true
-                    onInput={handleChangeAlive} 
+                    onChange={handleChangeAlive} 
                 />
                 <label htmlFor="alive"> Alive</label>
                 
@@ -28,7 +28,7 @@ function FilterByAlive({ filterAlive, handleFilterAlive }) {
                     id="dead"
                     value="dead"
                     checked={filterAlive === "dead"} //false
-                    onInput={handleChangeAlive}
+                    onChange={handleChangeAlive}
                 />
                 <label htmlFor="dead"> Dead</label>
         
@@ -38,7 +38,7 @@ function FilterByAlive({ filterAlive, handleFilterAlive }) {
                     id="allstatus"
                     value="allstatus"
                     checked={filterAlive === "all"}
-                    onInput={handleChangeAlive}
+                    onChange={handleChangeAlive}
                 />
                 <label htmlFor="allstatus"> All</label>
             </div>

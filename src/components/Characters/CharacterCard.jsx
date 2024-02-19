@@ -1,7 +1,7 @@
-import "../scss/App.scss";
+import '../../scss/App.scss';
 import { Link } from 'react-router-dom';
 import PropTypes  from "prop-types";
-import defaultPhoto from '../images/HogwartsEscudo.png'; 
+import defaultPhoto from '../../images/HogwartsEscudo.png';
 
 function CharacterCard ({ character }) {
   return (

@@ -1,3 +1,4 @@
+import '../../scss/App.scss';
 import PropTypes from 'prop-types';
 
 function FilterByHouse({ handleFilterHouse }) {
@@ -8,17 +9,17 @@ function FilterByHouse({ handleFilterHouse }) {
     };
   
     return (
-        <fieldset className="col2 mt-1" >House:
-          <label htmlFor="house">
+        <div className="col2 mt-1" >
+          <label htmlFor="house">House:
             <select name="house" id="house">
                 <option value="Gryffindor" onInput={handleInputHouse}>Gryffindor</option>
-                <option value="Hufflepuff"onInput={handleInputHouse}>Hufflepuff</option>
-                <option value="Ravenclaw " onInput={handleInputHouse}>Ravenclaw</option>
+                <option value="Hufflepuff" onInput={handleInputHouse}>Hufflepuff</option>
+                <option value="Ravenclaw" onInput={handleInputHouse}>Ravenclaw</option>
                 <option value="Slytherin" onInput={handleInputHouse}>Slytherin</option>
                 <option value="All" onInput={handleInputHouse}>All</option>
             </select>
           </label>
-        </fieldset>
+        </div>
     );
   }
 
